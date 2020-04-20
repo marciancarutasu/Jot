@@ -1,6 +1,6 @@
 <template>
 <div>
-<h1>hello from main component</h1>
+<h1>testing forge environment</h1>
 
 </div>
 </template>
