@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**restricts api acces only to authenticated users */
+/**
+ * Restricts api access only to authenticated users.
+ */
 Route::middleware('auth:api')->group(function()
 {
-/** Contacts endpoint CRUD */
+
+/**
+ * Contacts endpoint CRUD.
+ */
     Route::get('/contacts/{contact}', 'ContactsController@show');
     Route::post('/contacts', 'ContactsController@store');
     Route::patch('/contacts/{contact}', 'ContactsController@update');
