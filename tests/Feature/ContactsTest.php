@@ -114,13 +114,37 @@ class ContactsTest extends TestCase
      */
     public function a_contact_can_be_deleted()
     {
-        $contact = factory(Contact::class)->create();
+        $contact = factory(Contact::class)->create(['user_id' => $this->user->id]);
         $response = $this->delete('/api/contact/{contact->id}');
 
         $this->assertCount(0, Contact::all());
     }
 
+    /**
+     * @test
+     *
+     */
+    public function a_list_of_contacts_can_be_fetched_for_authenticated_users()
+    {
+        $user = factory(User::class)->create();
+        $anotherUser = factory(User::class)->create();
+        $contact = factory(Contact::class)->create(['user_id' => $user->id]);
+        $anotherContacta = factory(Contact::class)->create(['user_id' => $anotherUser->id]);
 
+        $response = $this->get('/api/contacts?api_token={$user->api_token}');
+        $response->assertJsonCount(1)->assertJsonCount(['id' => $contact->id]);
+    }
+
+    /**
+     * @test
+     */
+    public function only_users_contact_can_be_retrieved()
+    {
+        $contact = factory(Contact::class)->create(['user_id' => $this->user->id]);
+        $anotherUser = factory(User::class)->create();
+
+        $response = $this->get('/api/contact/{$contact->id?api_token={$another_user->api_token}');
+    }
     private function data()
     {
         return  [

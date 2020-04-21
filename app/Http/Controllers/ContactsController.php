@@ -7,6 +7,14 @@ use App\Contact;
 
 class ContactsController extends Controller
 {
+
+    /**
+     * Gets current app user from request object and retrieves all associated contacts.
+     */
+    public function index()
+    {
+        return $request()->user()->contacts;
+    }
     /**
      * POST method for contacts CRUD.
      */
