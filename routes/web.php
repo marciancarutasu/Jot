@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-echo 'testing testing';
 
 /**
  * Workaround to redirect any request to the index method found in AppController.
