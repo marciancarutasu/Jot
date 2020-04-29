@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="focus" @click="focus = false" class="bg-black opacity-0 absolute right-0 left-0 top-0 bottom-0 z-10"></div>
+        <div v-if="focus" @click="focus = false"></div>
 
         <div class="relative z-10">
             <input type="text" class="w-64 mr-6 bg-gray-200 border border-gray-400 pl-8 pr-3 py-1 rounded-full text-sm focus:outline-none focus:border-blue-500 focus:shadow focus:bg-gray-100" placeholder="Search..." id="searchTerm" v-model="searchTerm" @input="search" @focus="focus = true">

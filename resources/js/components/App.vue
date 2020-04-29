@@ -1,43 +1,38 @@
 <template>
-    <div class="h-screen bg-white">
-        <div class="flex">
-            <div class="pl-6 bg-gray-200 w-48 h-screen border-r-2 border-gray-400">
-                <nav class="pt-4">
-                    <router-link to="/">
-                        <div class="tracking-wide pl-3">Home</div>
-                    </router-link>
+    <div>
+        <nav>
+            <router-link to="/">
+                <div>Home</div>
+            </router-link>
 
-                    <router-link to="/contacts/create" class="flex items-center py-2 hover:text-blue-600 text-sm">
-                        <div class="tracking-wide pl-3">Add New</div>
-                    </router-link>
+            <router-link to="/contacts/create">
+                <div>Add New</div>
+            </router-link>
 
-                    <router-link to="/contacts" class="flex items-center py-2 hover:text-blue-600 text-sm">
-                        <div class="tracking-wide pl-3">Contacts</div>
-                    </router-link>
+            <router-link to="/contacts">
+                <div>Contacts</div>
+            </router-link>
 
-                    <router-link to="/logout" class="flex items-center py-2 hover:text-blue-600 text-sm">
-                        <div class="tracking-wide pl-3">Logout</div>
-                    </router-link>
-                </nav>
+            <router-link to="/logout">
+                <div>Logout</div>
+            </router-link>
+        </nav>
+        <div>
+            <div>
+                <div>
+                    {{ title }}
+                </div>
+
+                <div>
+                    <SearchBar />
+                    {{ user.name }}
+                </div>
             </div>
-            <div class="flex flex-col flex-1 h-screen overflow-y-hidden">
-                <div class="h-16 px-6 border-b border-gray-400 flex items-center justify-between">
-                    <div>
-                        {{ title }}
-                    </div>
 
-                    <div class="flex items-center">
-                        <SearchBar />
-                        {{ user.name }}
-                    </div>
-                </div>
-
-                <div class="flex flex-col overflow-y-hidden flex-1">
-                    <router-view class="p-6 overflow-x-hidden"></router-view>
-                </div>
+            <div>
+                <router-view></router-view>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -46,11 +41,9 @@
 
     export default {
         name: "App",
-
         props: [
             'user'
         ],
-
         components: {
             // SearchBar
         },
@@ -85,12 +78,8 @@
             },
 
             title() {
-                document.title = this.title + ' | Jot - The SPA App'
+                document.title = this.title + ' | Laravel Vue Boilerplate'
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>
