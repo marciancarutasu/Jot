@@ -21,3 +21,7 @@ Auth::routes();
  * useful in creating SPA apps.
  */
 Route::get('/{any}', 'AppController@index')->where('any', '.*');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
