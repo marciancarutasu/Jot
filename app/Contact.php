@@ -4,21 +4,28 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Contact extends Model
 {
-    /**
-     * @var array
-     */
+    use Searchable;
+
     protected $guarded = [];
+
     protected $dates = ['birthday'];
 
-    /**
-     * Simple API Extension for DateTime format.
-     * save string dates as timestamps - correct
-     */
+    public function path()
+    {
+        return '/contacts/' . $this->id;
+    }
+
     public function setBirthdayAttribute($birthday)
     {
         $this->attributes['birthday'] = Carbon::parse($birthday);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -2,58 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Contact;
+use App\Http\Resources\Contact as ContactResource;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContactsController extends Controller
 {
-    /**
-     * POST single contact.;
-     */
+    public function index()
+    {
+        $this->authorize('viewAny', Contact::class);
+
+        return ContactResource::collection(request()->user()->contacts);
+    }
+
     public function store()
     {
-        $data = request()->validate([
+        $this->authorize('create', Contact::class);
+
+        $contact = request()->user()->contacts()->create($this->validateData());
+
+        return (new ContactResource($contact))
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function show(Contact $contact)
+    {
+        $this->authorize('view', $contact);
+
+        return new ContactResource($contact);
+    }
+
+    public function update(Contact $contact)
+    {
+        $this->authorize('update', $contact);
+
+        $contact->update($this->validateData());
+
+        return (new ContactResource($contact))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
+    }
+
+    public function destroy(Contact $contact)
+    {
+        $this->authorize('delete', $contact);
+
+        $contact->delete();
+
+        return response([], Response::HTTP_NO_CONTENT);
+    }
+
+    private function validateData()
+    {
+        return request()->validate([
             'name' => 'required',
             'email' => 'required|email',
             'birthday' => 'required',
-            'company' => 'required'
+            'company' => 'required',
         ]);
-
-        Contact::create($data);
     }
-
-    /**
-     * GET single contact by id
-     */
-    public function show(Contact $contact)
-    {
-        return $contact;
-    }
-
-    // /**
-    //  * UPDATE method for contacts CRUD.
-    //  */
-    // public function update(Contact $contact) {
-    //     $contact->update($this->validateData());
-    // }
-
-    // /**
-    //  * DELETE method for contact CRUD.
-    //  */
-    // public function delete(Contact $contact) {
-    //     $contact->delete();
-    // }
-
-    // /**
-    //  * Validate request data.
-    //  */
-    // private function validateData()
-    // {
-    //     return request()->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         'birthday' => 'required',
-    //         'company' => 'required'
-    //     ]);
-    // }
 }
