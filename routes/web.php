@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 /**
- * Workaround to redirect any request to the index method found in AppController.
- * Useful in creating SPA apps.
+ * redirect any request to the index method found in AppController.
+ * useful in creating SPA apps.
  */
 Route::get('/{any}', 'AppController@index')->where('any', '.*');
