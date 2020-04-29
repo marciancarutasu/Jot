@@ -1,18 +1,25 @@
 <template>
     <div>
         <form @submit.prevent="submitForm">
-            <InputField name="name" label="Contact Name" :errors="errors"
+            <label for="name">Contact name</label>
+            <InputField name="name" :errors="errors"
             placeholder="Contact Name" @update:field="form.name = $event" />
-            <InputField name="email" label="Contact Email" :errors="errors"
+
+            <label for="email">Contact Email</label>
+            <InputField name="email" :errors="errors"
             placeholder="Contact Email" @update:field="form.email = $event" />
-            <InputField name="company" label="Company" :errors="errors"
+
+            <label for="company">Company</label>
+            <InputField name="company":errors="errors"
             placeholder="Company" @update:field="form.company = $event" />
-            <InputField name="birthday" label="Birthday" :errors="errors"
+
+            <label for="birthday">Birthday</label>
+            <InputField name="birthday" :errors="errors"
             placeholder="MM/DD/YYYY" @update:field="form.birthday = $event" />
 
-            <div class="flex justify-end">
-                <button class="py-2 px-4 rounded text-red-700 border mr-5 hover:border-red-700">Cancel</button>
-                <button class="bg-blue-500 py-2 px-4 text-white rounded hover:bg-blue-400">Add New Contact</button>
+            <div>
+                <button>Cancel</button>
+                <button>Add New Contact</button>
             </div>
         </form>
     </div>

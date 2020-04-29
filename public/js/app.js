@@ -2221,6 +2221,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactsCreate",
@@ -80307,10 +80314,11 @@ var render = function() {
         }
       },
       [
+        _c("label", { attrs: { for: "name" } }, [_vm._v("Contact name")]),
+        _vm._v(" "),
         _c("InputField", {
           attrs: {
             name: "name",
-            label: "Contact Name",
             errors: _vm.errors,
             placeholder: "Contact Name"
           },
@@ -80321,10 +80329,11 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _c("label", { attrs: { for: "email" } }, [_vm._v("Contact Email")]),
+        _vm._v(" "),
         _c("InputField", {
           attrs: {
             name: "email",
-            label: "Contact Email",
             errors: _vm.errors,
             placeholder: "Contact Email"
           },
@@ -80335,10 +80344,11 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _c("label", { attrs: { for: "company" } }, [_vm._v("Company")]),
+        _vm._v(" "),
         _c("InputField", {
           attrs: {
             name: "company",
-            label: "Company",
             errors: _vm.errors,
             placeholder: "Company"
           },
@@ -80349,10 +80359,11 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _c("label", { attrs: { for: "birthday" } }, [_vm._v("Birthday")]),
+        _vm._v(" "),
         _c("InputField", {
           attrs: {
             name: "birthday",
-            label: "Birthday",
             errors: _vm.errors,
             placeholder: "MM/DD/YYYY"
           },
@@ -80374,24 +80385,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex justify-end" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "py-2 px-4 rounded text-red-700 border mr-5 hover:border-red-700"
-        },
-        [_vm._v("Cancel")]
-      ),
+    return _c("div", [
+      _c("button", [_vm._v("Cancel")]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass:
-            "bg-blue-500 py-2 px-4 text-white rounded hover:bg-blue-400"
-        },
-        [_vm._v("Add New Contact")]
-      )
+      _c("button", [_vm._v("Add New Contact")])
     ])
   }
 ]
