@@ -3,7 +3,9 @@
         <div class="flex">
             <div class="pl-6 bg-gray-200 w-48 h-screen border-r-2 border-gray-400">
                 <nav class="pt-4">
-                    <router-link to="/">Home</router-link>
+                    <router-link to="/">
+                        <div class="tracking-wide pl-3">Home</div>
+                    </router-link>
 
                     <router-link to="/contacts/create" class="flex items-center py-2 hover:text-blue-600 text-sm">
                         <div class="tracking-wide pl-3">Add New</div>
@@ -50,7 +52,7 @@
         ],
 
         components: {
-            SearchBar
+            // SearchBar
         },
 
         created() {
@@ -83,7 +85,7 @@
             },
 
             title() {
-                document.title = this.title + ' | Laravel Vue Boilerplate'
+                document.title = this.title + ' | Jot - The SPA App'
             }
         }
     }
