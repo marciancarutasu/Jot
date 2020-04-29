@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+//@todo check this.
+Route::get('/logout-manual', function () {
+    request()->session()->invalidate();
+});
+
 /**
  * redirect any request to the index method found in AppController.
  * useful in creating SPA apps.
  */
 Route::get('/{any}', 'AppController@index')->where('any', '.*');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
