@@ -2,19 +2,16 @@
     <div>
         <div v-if="focus" @click="focus = false"></div>
 
-        <div class="relative z-10">
-            <input type="text" class="w-64 mr-6 bg-gray-200 border border-gray-400 pl-8 pr-3 py-1 rounded-full text-sm focus:outline-none focus:border-blue-500 focus:shadow focus:bg-gray-100" placeholder="Search..." id="searchTerm" v-model="searchTerm" @input="search" @focus="focus = true">
+        <div>
+            <input type="text" id="searchTerm" v-model="searchTerm" @input="search" @focus="focus = true">
 
-            <div v-if="focus" class="absolute bg-blue-900 text-white rounded-lg p-4 w-96 right-0 mr-6 mt-2 shadow z-20">
+            <div v-if="focus">
                 <div v-if="results == 0">No results found for '{{ searchTerm }}'</div>
                 <div v-for="result in results" @click="focus = false">
                     <router-link :to="result.links.self" class="block py-2">
-                        <div class="flex items-center">
-
-                            <div class="pl-3">
-                                <p>{{ result.data.name }}</p>
-                                <p>{{ result.data.company }}</p>
-                            </div>
+                        <div>
+                            <p>{{ result.data.name }}</p>
+                            <p>{{ result.data.company }}</p>
                         </div>
                     </router-link>
                 </div>

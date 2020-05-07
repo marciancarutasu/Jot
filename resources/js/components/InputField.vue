@@ -60,9 +60,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .error-field {
-        @apply .border-red-500 .border-b-2
-    }
-</style>

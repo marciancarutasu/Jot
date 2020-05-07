@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * a user can have multiple contacts
+     * one-to-many relationship
+     */
     public function contacts()
     {
         return $this->hasMany(Contact::class);

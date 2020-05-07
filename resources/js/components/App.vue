@@ -24,7 +24,7 @@
                 </div>
 
                 <div>
-                    <SearchBar />
+                    <!-- <SearchBar /> -->
                     {{ user.name }}
                 </div>
             </div>

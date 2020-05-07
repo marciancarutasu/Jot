@@ -1,20 +1,13 @@
 <template>
     <div>
         <form @submit.prevent="submitForm">
-            <label for="name">Contact name</label>
-            <InputField name="name" :errors="errors"
+            <InputField name="name" label="Contact Name" :errors="errors"
             placeholder="Contact Name" @update:field="form.name = $event" />
-
-            <label for="email">Contact Email</label>
-            <InputField name="email" :errors="errors"
+            <InputField name="email" label="Contact Email" :errors="errors"
             placeholder="Contact Email" @update:field="form.email = $event" />
-
-            <label for="company">Company</label>
-            <InputField name="company":errors="errors"
+            <InputField name="company" label="Company" :errors="errors"
             placeholder="Company" @update:field="form.company = $event" />
-
-            <label for="birthday">Birthday</label>
-            <InputField name="birthday" :errors="errors"
+            <InputField name="birthday" label="Birthday" :errors="errors"
             placeholder="MM/DD/YYYY" @update:field="form.birthday = $event" />
 
             <div>

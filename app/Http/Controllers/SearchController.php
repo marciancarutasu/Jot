@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    /**
+     * search through contacts
+     */
     public function index()
     {
         $data = request()->validate([
